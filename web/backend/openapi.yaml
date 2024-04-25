@@ -67,7 +67,7 @@ components:
     TaskRequest:
       type: object
       properties:
-         name:
+        name:
           type: string
           example: John Doe
         title:
