@@ -90,7 +90,7 @@ function App() {
               <AppBar position="static" color="primary">
                   <Toolbar>
                       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                          TaskMaster  - Empowering Your Productivity Journey
+                          TaskMaster - Empowering Your Productivity Journey
                       </Typography>
                       {loggedIn && (
                       <IconButton color="inherit" onClick={handleLogout}>
