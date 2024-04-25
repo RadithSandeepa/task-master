@@ -1,0 +1,23 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+  inbound:
+    - name: tasks
+      port: 8080
+      type: REST
+      networkVisibility: Public
+      context: /
+      schemaFilePath: openapi.yaml
+  outbound:
+    serviceReferences:
+      - name: task-service
+        connectionConfig: <connection-config-id>
+        env:
+          - from: TaskServiceURL
+            to: TASK_SERVICE_URL
+          - from: TaskServiceKey
+            to: TASK_SERVICE_API_KEY
+          - from: TaskServiceSecret
+            to: TASK_SERVICE_API_SECRET
+          - from: TokenURL
+            to: TASK_SERVICE_OAUTH_TOKEN_URL

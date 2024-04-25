@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: Task Management API
+  description: Backend service  the TaskMaster.
+  version: "1.0"
+servers:
+  - url: http://localhost:8080
+    description: Development server
+paths:
+  /create-task:
+    post:
+      summary: Create a task
+      description: Forwards the task creation request to the Task Management service with proper authentication.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskRequest'
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Internal server error
+  /tasks:
+    get:
+      summary: Get tasks by email
+      description: Fetches tasks for the given email. Supports filtering by the 'upcoming' query parameter.
+      parameters:
+        - in: query
+          name: email
+          schema:
+            type: String
+             format: email
+          required: true
+          description: Email address to filter appointments
+        - in: query
+          name: upcoming
+          schema:
+            type: string
+            enum: ['true', 'false']
+          required: false
+          description: Optional filter for fetching only upcoming tasks
+      responses:
+        '200':
+          description: A list of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskResponse'
+        '400':
+          description: Missing or invalid parameters
+        '401':
+          description: Authentication failed
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    TaskRequest:
+      type: object
+      properties:
+         name:
+          type: string
+          example: John Doe
+        title:
+          type: string
+          example: Homework
+        dueDate:
+          type: string
+          format: date-time
+          example: '2023-05-15T23:59:59Z'
+        email:
+          type: string
+          format: email
+          example: john.doe@example.com
+      required:
+        - name
+        - email
+        - title
+    TaskResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: John Doe
+        title:
+          type: string
+          example: Homework
+        dueDate:
+          type: string
+          format: date-time
+          example: '2023-05-15T23:59:59Z'
+        email:
+          type: string
+          format: email
+          example: john.doe@example.com
+      required:
+        - id
+        - name
+        - title
+        - dueDate
+        - email
