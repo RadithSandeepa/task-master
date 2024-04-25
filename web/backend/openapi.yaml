@@ -37,7 +37,7 @@ paths:
           name: email
           schema:
             type: String
-             format: email
+            format: email
           required: true
           description: Email address to filter appointments
         - in: query
