@@ -10,9 +10,9 @@ const port = process.env.PORT || 8080;
 app.use(bodyParser.json())
 
 async function getAccessToken() {
-    const tokenUrl = TASKS_OAUTH_TOKEN_URL; 
-    const clientId = TASKS_OAUTH_CLIENT_ID; 
-    const clientSecret = TASKS_OAUTH_CLIENT_SECRET; 
+    const tokenUrl = process.env.TASKS_OAUTH_TOKEN_URL; 
+    const clientId = process.env.TASKS_OAUTH_CLIENT_ID; 
+    const clientSecret = process.env.TASKS_OAUTH_CLIENT_SECRET; 
 
     try {
         const accessToken = await authenticate(tokenUrl, clientId, clientSecret);
@@ -33,7 +33,7 @@ app.get('/tasks', async (req, res) => {
 
         const accessToken = await getAccessToken();
 
-        const taskmanagementServiceUrl = TASKS_MANAGEMENT_SERVICE_URL; 
+        const taskmanagementServiceUrl = process.env.TASK_SERVICE_URL; 
         const response = await axios.get(`${taskmanagementServiceUrl}/tasks?email=${email}`, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -52,7 +52,7 @@ app.post('/create-task', async (req, res) => {
     try {
         const accessToken = await getAccessToken();
 
-        const taskmanagementServiceUrl = TASKS_MANAGEMENT_SERVICE_URL; 
+        const taskmanagementServiceUrl = process.env.TASK_SERVICE_URL; 
         if (!taskmanagementServiceUrl) {
             throw new Error('Task service URL is not defined in the environment variables');
         }

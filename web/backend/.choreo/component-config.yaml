@@ -10,14 +10,14 @@ spec:
       schemaFilePath: openapi.yaml
   outbound:
     serviceReferences:
-      - name: task-service
-        connectionConfig: <connection-config-id>
-        env:
-          - from: TaskServiceURL
-            to: TASK_SERVICE_URL
-          - from: TaskServiceKey
-            to: TASK_SERVICE_API_KEY
-          - from: TaskServiceSecret
-            to: TASK_SERVICE_API_SECRET
-          - from: TokenURL
-            to: TASK_SERVICE_OAUTH_TOKEN_URL
+    - name: choreo:///radithsandeepa/task-management/dlqcfa/8b1c3/v1.0/ORGANIZATION
+      connectionConfig: 01ef02bc-e58b-1666-8705-dc849785e560
+      env:
+      - from: ServiceURL
+        to: TASK_SERVICE_URL
+      - from: ConsumerKey
+        to: TASKS_OAUTH_CLIENT_ID
+      - from: ConsumerSecret
+        to:  TASKS_OAUTH_CLIENT_SECRET
+      - from: TokenURL
+        to: TASKS_OAUTH_TOKEN_URL
