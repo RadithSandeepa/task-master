@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const TASK_MANAGEMENT_SERVICE_URL = window.configs.apiUrl;
+const TASK_MANAGEMENT_SERVICE_URL = window.configs.serviceURL;
 
 export const addTask = async (taskDetails) => {
   try {
