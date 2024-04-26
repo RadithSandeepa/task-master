@@ -34,6 +34,7 @@ function App() {
       if (storedUserDetails) {
         const userDetails = JSON.parse(storedUserDetails);
         setUserDetails(userDetails);
+        console.log(userDetails);
         setLoggedIn(true);
         isUserInfoSet = true;
       }
