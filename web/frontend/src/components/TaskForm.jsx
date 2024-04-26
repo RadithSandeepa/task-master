@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { addTask } from '../services/taskmanagementservice';
 
 const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
     const [title, setTitle] = useState('');
     const [dueDate, setDueDate] = useState('');
-
+    
     //set time according to colombo time zone...
     const today = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Colombo"}));
     const year = today.getFullYear();
@@ -20,6 +20,7 @@ const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
         if (!validateForm()) return;
 
         const newTask = {
+            name: userDetails.name,
             title,
             dueDate,
             email: userDetails.email,
@@ -39,7 +40,7 @@ const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
 
     const validateForm = () => {
         let isValid = true;
-
+       
         if (!title) {
             handleOpenSnackbar('Task title is required.');
             isValid = false;
