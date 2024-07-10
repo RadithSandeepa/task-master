@@ -1,4 +1,4 @@
-# task-master
+# Task Master
 
 #Task Master - WSO2 Code Challenge(2024)
 
