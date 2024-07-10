@@ -1,5 +1,3 @@
-# task-master
-
 #Task Master - WSO2 Code Challenge(2024)
 
 ## Project Overview and Acknowledgements
