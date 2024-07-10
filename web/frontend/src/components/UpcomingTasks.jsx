@@ -4,6 +4,9 @@ import { List, ListItem, ListItemText, Typography, Paper, Avatar, ListItemAvatar
 import EventIcon from '@mui/icons-material/Event';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { format } from 'date-fns';
+import "./upcomingtasks.scss";
+import theme from "../theme"
+import { ThemeProvider } from '@emotion/react';
 
 const UpcomingTasks = ({ email, triggerRefresh }) => {
     const [tasks, setTasks] = useState([]);
@@ -23,39 +26,40 @@ const UpcomingTasks = ({ email, triggerRefresh }) => {
         fetchTasks();
     }, [email, triggerRefresh]);
 
-
     if (tasks.length === 0) {
         return (
-            <Typography variant="subtitle1" style={{ marginTop: 20, textAlign: 'center' }}>
+            <Typography variant="subtitle1" style={{ marginTop: 20, textAlign: 'center' , width: '100%'}}>
                 No tasks added yet. Add some tasks!
             </Typography>
         );
     }
 
     return (
-        <Paper elevation={3} style={{ marginTop: 20, padding: '20px' }}>
-            <Typography variant="h6" style={{ marginBottom: 10 }}>
-                Upcoming Tasks
+        <ThemeProvider theme={theme}>
+        <Paper elevation={3} style={{ marginTop: 20, padding: '20px' }} className='paper'>
+            <Typography variant="h6" style={{ marginBottom: 10}}>
+                Tasks
             </Typography>
             <List>
                 {tasks.map((task, index) => (
                     <ListItem key={index}>
                         <ListItemAvatar>
-                            <Avatar>
-                                <EventIcon />
+                            <Avatar sx={{ backgroundColor: 'rgba(7, 7, 83, 0.4)'}}>
+                                <EventIcon sx={{ color: 'rgb(7, 7, 83)'}}/>
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText
+                        <ListItemText 
                             primary={task.title}
-                            secondary={`Due on ${format(new Date(task.dueDate), 'MMMM d, yyyy, h:mm a')}`}
+                            secondary={`${format(new Date(task.dueDate), 'MMMM d, yyyy, h:mm a')}`}
                         />
-                        <IconButton edge="end" aria-label="delete">
+                        <IconButton edge="end" aria-label="delete" sx={{ color: 'rgb(7, 7, 83)'}}>
                             <DeleteIcon />
                         </IconButton>
                     </ListItem>
                 ))}
             </List>
         </Paper>
+        </ThemeProvider>
     );
 };
 

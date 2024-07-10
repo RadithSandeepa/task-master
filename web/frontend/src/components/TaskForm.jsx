@@ -1,6 +1,8 @@
-import React, {  useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import {  useState } from 'react';
+import { TextField, Button, ThemeProvider } from '@mui/material';
 import { addTask } from '../services/taskmanagementservice';
+import "./taskform.scss";
+import theme from '../theme';
 
 const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
     const [title, setTitle] = useState('');
@@ -60,12 +62,13 @@ const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+        <ThemeProvider theme={theme}>
+        <form className='form' onSubmit={handleSubmit} style={{ width: '70%'}}>
             <TextField
                 label="Task Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                fullWidth
+                style={{ width: '90%' }}
                 margin="normal"
                 variant="outlined"
             />
@@ -74,17 +77,18 @@ const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
                 type="datetime-local"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                fullWidth
+                style={{ width: '90%' }}
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{
                     shrink: true,
                 }}
             />
-            <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: 20 }}>
+            <Button type="submit" variant="contained" sx={{ backgroundColor: 'rgba(14, 14, 128, 0.748)', color: 'white','&:hover': {transform: 'scale(1.1)', backgroundColor: 'rgba(14, 14, 128, 0.748)', },}}  style={{ marginTop: 20, width: '80%' }}>
                 Add Task
             </Button>
         </form>
+        </ThemeProvider>
     );
 };
 

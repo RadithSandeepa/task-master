@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Merriweather", serif;
+}
+
+body{
+    background-color: rgba(80, 40, 191, 0.468);
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    i{
+        font-size: 100px;
+       
+    }
+}
+
+.logout-button{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    color: rgb(7, 7, 83);
+    font-size: 24px;
+
+}
+
+@mixin mobile {
+    @media (max-width: 738px) {
+      @content;
+    }
+}
+  
+@mixin tablet {
+    @media (max-width: 1300px) {
+      @content;
+    }
+}
+  
+@mixin desktop {
+    @media (max-width: 1366px) {
+      @content;
+    }
+}

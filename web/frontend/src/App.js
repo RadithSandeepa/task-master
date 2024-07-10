@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Typography, Box, CssBaseline, AppBar, Toolbar, IconButton, Snackbar, Divider } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CloseIcon from '@mui/icons-material/Close';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme';
 import Cookies from 'js-cookie';
 import ProtectedRoute from './security/ProtectedRoute';
-import UpcomingTasks from './components/UpcomingTasks';
-import TaskForm from './components/TaskForm';
-import Login from './pages/Login';
+import Login from './pages/login/Login';
+import { motion } from 'framer-motion';
+import "./app.scss";
+import Home from './pages/home/Home';
+import {  ThemeProvider } from '@emotion/react';
+import theme from './theme';
 
 function App() {
     const [loading, setLoading] = useState(true);
     const [loggedIn, setLoggedIn] = useState(false);
     const [userDetails, setUserDetails] = useState({ username: '' });
-    const [snackbar, setSnackbar] = useState({
-        open: false,
-        message: '',
-    });
-    const [tasksRefreshKey, setTasksRefreshKey] = useState(0);
-
+   
     useEffect(() => {
       let isUserInfoSet = false;
       if (process.env.REACT_APP_ENV === 'development') {
@@ -34,7 +27,6 @@ function App() {
       if (storedUserDetails) {
         const userDetails = JSON.parse(storedUserDetails);
         setUserDetails(userDetails);
-        console.log(userDetails);
         setLoggedIn(true);
         isUserInfoSet = true;
       }
@@ -65,75 +57,30 @@ function App() {
       Cookies.remove('userinfo', { path: '/' });
     };
   
-    const triggerTaskRefresh = () => {
-      setTasksRefreshKey(prevKey => prevKey + 1);
-    };
-   
-    const handleCloseSnackbar = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setSnackbar({ ...snackbar, open: false });
-    };
-
-    const handleOpenSnackbar = (message) => {
-      setSnackbar({ open: true, message });
-    };
-
     if (loading) {
-      return <div>Loading...</div>; // Or a more sophisticated loading indicator
+      return (
+        <div className='loading'>
+          <motion.i className="fas fa-gear" animate={{ rotate: [0, 360], transition: { duration: 1, repeat: Infinity } }}></motion.i> 
+        </div>
+      )
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
+      <ThemeProvider theme={theme}>
             <Router>
-              <AppBar position="static" color="primary">
-                  <Toolbar>
-                      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                          TaskMaster - Empowering Your Productivity Journey
-                      </Typography>
-                      {loggedIn && (
-                      <IconButton color="inherit" onClick={handleLogout}>
-                        <ExitToAppIcon />
-                      </IconButton>
-                      )}
-                  </Toolbar>
-              </AppBar>
+                {loggedIn && ( // Render logout button only if logged in
+                  <div className="logout-button" onClick={handleLogout}>
+                      <i className="fas fa-sign-out-alt"></i>
+                  </div>
+                )}
               <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route element={<ProtectedRoute isLoggedIn={loggedIn} />}>
-                  <Route path="/" element={
-                      <Container maxWidth="sm">
-                      <Box sx={{ my: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <Typography component="h1" variant="h5" style={{ marginBottom: 20 }}>
-                            Welcome, {userDetails.name}
-                          </Typography>
-                          <TaskForm userDetails={userDetails} onAddTask={triggerTaskRefresh} handleOpenSnackbar={handleOpenSnackbar}/>
-                          <Divider style={{ margin: '20px 0' }} />
-                          <UpcomingTasks email={userDetails.email} triggerRefresh={tasksRefreshKey} />
-                      </Box>
-                  </Container>
-                  } />
-                  </Route>
+                  <Route path="/" element={<Home userDetails={userDetails} />} />
+                </Route>
               </Routes>
             </Router>
-            <Snackbar
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                }}
-                open={snackbar.open}
-                autoHideDuration={6000}
-                onClose={handleCloseSnackbar}
-                message={snackbar.message}
-                action={
-                    <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnackbar}>
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                }
-            />
-        </ThemeProvider>
+      </ThemeProvider>
     );
 }
 
