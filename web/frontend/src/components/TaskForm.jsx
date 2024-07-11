@@ -64,6 +64,7 @@ const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
     return (
         <ThemeProvider theme={theme}>
         <form className='form' onSubmit={handleSubmit} style={{ width: '70%'}}>
+            <h5 className="header">Add Task</h5>
             <TextField
                 label="Task Title"
                 value={title}

@@ -29,7 +29,7 @@ const Home = ({ userDetails }) => {
 
   return (
     <div className="home">
-        <p className="title">Welcome {userDetails.name}</p>
+        <p className="title">Welcome {userDetails.username}</p>
         <div className="body">
         <div className="left">
             <TaskForm userDetails={userDetails} onAddTask={triggerTaskRefresh} handleOpenSnackbar={handleOpenSnackbar}/>   
