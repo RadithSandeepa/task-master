@@ -10,8 +10,8 @@ spec:
       schemaFilePath: openapi.yaml
   outbound:
     serviceReferences:
-    - name: choreo:///radithsandeepa/task-management/dlqcfa/8b1c3/v1.0/ORGANIZATION
-      connectionConfig: 01ef02bc-e58b-1666-8705-dc849785e560
+    - name: choreo:///radithsandeepa/task-management/dlqcfa/8b1c3/v1/ORGANIZATION
+      connectionConfig: 01ef3ef4-f419-10f6-83b2-3b8786d0a679
       env:
       - from: ServiceURL
         to: TASK_SERVICE_URL
