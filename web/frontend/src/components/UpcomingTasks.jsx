@@ -8,7 +8,7 @@ import "./upcomingtasks.scss";
 import theme from "../theme"
 import { ThemeProvider } from '@emotion/react';
 
-const UpcomingTasks = ({ email, triggerRefresh }) => {
+const UpcomingTasks = ({ email, triggerRefresh, handleOpenSnackbar }) => {
     const [tasks, setTasks] = useState([]);
 
     const fetchTasks = async () => {

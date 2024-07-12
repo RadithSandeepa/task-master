@@ -37,7 +37,7 @@ const Home = ({ userDetails }) => {
             <TaskForm userDetails={userDetails} onAddTask={triggerTaskRefresh} handleOpenSnackbar={handleOpenSnackbar}/>   
         </div>
         <div className="right">
-            <UpcomingTasks email={userDetails.email} triggerRefresh={tasksRefreshKey} />
+            <UpcomingTasks email={userDetails.email} triggerRefresh={tasksRefreshKey} handleOpenSnackbar={handleOpenSnackbar}/>
         </div>
         </div>
         <Snackbar
