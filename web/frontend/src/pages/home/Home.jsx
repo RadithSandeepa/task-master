@@ -1,7 +1,7 @@
 import "./home.scss";
 import UpcomingTasks from '../../components/UpcomingTasks';
 import TaskForm from '../../components/TaskForm';
-import { Container, Typography, Box, CssBaseline, AppBar, Toolbar, IconButton, Snackbar, Divider } from '@mui/material';
+import { IconButton, Snackbar } from '@mui/material';
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 

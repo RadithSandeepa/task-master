@@ -70,6 +70,30 @@ app.post('/create-task', async (req, res) => {
     }
 });
 
+// Endpoint to delete a task
+app.delete('/delete-task/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const accessToken = await getAccessToken();
+
+        const taskmanagementServiceUrl = process.env.TASK_SERVICE_URL; 
+        if (!taskmanagementServiceUrl) {
+            throw new Error('Task service URL is not defined in the environment variables');
+        }
+
+        const response = await axios.delete(`${taskmanagementServiceUrl}/tasks/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+
+        res.status(response.status).send({ message: 'Task deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting task:', error);
+        res.status(error.response ? error.response.status : 500).send(error.message);
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

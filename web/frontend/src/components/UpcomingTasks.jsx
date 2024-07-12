@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUpcomingTasks } from '../services/taskmanagementservice';
+import { getUpcomingTasks, deleteTask } from '../services/taskmanagementservice';
 import { List, ListItem, ListItemText, Typography, Paper, Avatar, ListItemAvatar, IconButton } from '@mui/material';
 import EventIcon from '@mui/icons-material/Event';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -19,6 +19,19 @@ const UpcomingTasks = ({ email, triggerRefresh }) => {
             setTasks(upcomingTasks);
         } catch (error) {
             console.error('Failed to fetch tasks:', error);
+        }
+    };
+
+    const handleDelete = async (taskId) => {
+        if (!taskId) return;
+
+        try {
+            await deleteTask(taskId);
+            handleOpenSnackbar('Task deleted successfully!');
+            fetchTasks(); // Refresh tasks after deletion
+        } catch (error) {
+            console.error('Failed to delete task:', error);
+            handleOpenSnackbar('Failed to delete task. Please try again.');
         }
     };
 
@@ -52,7 +65,7 @@ const UpcomingTasks = ({ email, triggerRefresh }) => {
                             primary={task.title}
                             secondary={`${format(new Date(task.dueDate), 'MMMM d, yyyy, h:mm a')}`}
                         />
-                        <IconButton edge="end" aria-label="delete" sx={{ color: 'rgb(7, 7, 83)'}}>
+                        <IconButton edge="end" aria-label="delete" sx={{ color: 'rgb(7, 7, 83)'}} onClick={() => handleDelete(task.id)}>
                             <DeleteIcon />
                         </IconButton>
                     </ListItem>
