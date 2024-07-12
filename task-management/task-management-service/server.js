@@ -24,7 +24,7 @@ app.get('/tasks', async (req, res) => {
             const now = new Date();
             const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
 
-            whereCondition.appointmentDate = {
+            whereCondition.dueDate = {
                 [Sequelize.Op.gte]: now,
                 [Sequelize.Op.lt]: tomorrow,
             };
