@@ -27,9 +27,11 @@ const Home = ({ userDetails }) => {
         setTasksRefreshKey(prevKey => prevKey + 1);
     };
 
+    const fullName = userDetails.name ? userDetails.name : `${userDetails.first_name} ${userDetails.last_name}`;
+
   return (
     <div className="home">
-        <p className="title">Welcome {userDetails.username}</p>
+        <p className="title">Welcome, {fullName}</p>
         <div className="body">
         <div className="left">
             <TaskForm userDetails={userDetails} onAddTask={triggerTaskRefresh} handleOpenSnackbar={handleOpenSnackbar}/>   

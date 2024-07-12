@@ -21,8 +21,10 @@ const TaskForm = ({ userDetails, handleOpenSnackbar, onAddTask }) => {
         e.preventDefault();
         if (!validateForm()) return;
 
+        const fullName = userDetails.name ? userDetails.name : `${userDetails.first_name} ${userDetails.last_name}`;
+
         const newTask = {
-            name: userDetails.name,
+            name: fullName,
             title,
             dueDate,
             email: userDetails.email,
