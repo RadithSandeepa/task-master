@@ -33,6 +33,8 @@ This project is an excellent example of modern web development practices and sho
 <a id="System-Architecture-Diagram"></a>
 ## System Architecture Diagram
 
+![System Architecture Diagram](https://github.com/RadithSandeepa/task-master/blob/main/photos/system_architecture.png)
+
 <a id="Acknowledgements"></a>
 ## Acknowledgements
 
