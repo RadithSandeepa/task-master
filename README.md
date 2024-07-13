@@ -25,12 +25,23 @@ Welcome to TaskMaster! Developed for the WSO2 Code Challenge 2024, this robust t
 ## Table of Contents
 
 - [System Architecture Diagram](#System-Architecture-Diagram)
+- [Screenshots](#Screenshots)
+- [Eligibility](#Eligibility)
 - [Acknowledgements](#Acknowledgements)
 
 <a id="System-Architecture-Diagram"></a>
 ## System Architecture Diagram
 
 ![System Architecture Diagram](https://github.com/RadithSandeepa/task-master/blob/main/photos/system_architecture.png)
+
+
+<a id="Screenshots"></a>
+## Screenshots
+
+
+<a id="Eligibility"></a>
+## Eligibility
+
 
 <a id="Acknowledgements"></a>
 ## Acknowledgements
