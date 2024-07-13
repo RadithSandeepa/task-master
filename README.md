@@ -11,19 +11,16 @@ Welcome to TaskMaster! Developed for the WSO2 Code Challenge 2024, this robust t
    - The frontend, built with React and styled using SCSS, ensures that the application is fully responsive and provides a seamless experience across various devices and screen sizes.
 
 3. **Email Reminder Component**: 
-   - Using Ballerina, we developed a scheduled job component that sends email reminders for tasks due the next day. This component ensures users stay informed and never miss an important task.
+   - Using Ballerina, I developed a scheduled job component that sends email reminders for tasks due the next day. This component ensures users stay informed and never miss an important task.
 
 4. **Authentication**: 
-   - During development, we utilized Choreo's built-in identity provider for user authentication. For the production build, we implemented secure user authentication using Asgardeo.
+   - During development, I utilized Choreo's built-in identity provider for user authentication. For the production build, I implemented secure user authentication using Asgardeo.
 
 5. **Database**: 
    - MySQL is used as the database to store and manage task data efficiently.
 
 6. **Deployment**: 
    - The application is deployed using Choreo, ensuring scalability and reliable performance.
-
-This project is an excellent example of modern web development practices and showcases the integration of various technologies to build a comprehensive task management system.
-
 
 ## Table of Contents
 
