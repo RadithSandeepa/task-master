@@ -39,14 +39,18 @@ Welcome to TaskMaster! Developed for the WSO2 Code Challenge 2024, this robust t
 ## Screenshots
 
 ![Login](https://github.com/RadithSandeepa/task-master/blob/main/photos/login.png)
+
 ![Home](https://github.com/RadithSandeepa/task-master/blob/main/photos/home.png)
 
 <a id="Eligibility"></a>
 ## Eligibility
 
 ![Submission Proof(1)](https://github.com/RadithSandeepa/task-master/blob/main/photos/submission(1).png)
+
 ![Submission Proof(2)](https://github.com/RadithSandeepa/task-master/blob/main/photos/submission(2).png)
+
 ![Submission Proof(3)](https://github.com/RadithSandeepa/task-master/blob/main/photos/submission(3).png)
+
 ![Submission Proof(4)](https://github.com/RadithSandeepa/task-master/blob/main/photos/submission(4).png)
 
 
