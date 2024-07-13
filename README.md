@@ -51,4 +51,4 @@ While I used these resources for inspiration and guidance, the web application d
 
 Abeyweera, A. (2024, 04 01). *CareConnect - Mastering the WSO2 Code Challenge with Choreo* [GitHub Repository]. Retrieved from https://github.com/a5anka/careconnect
 
-Abeyweera, A. (2024, 04 09). *Mastering the WSO2 Code Challenge with Choreo | Community Call 5* [YouTube Video]. Retrieved from https://www.youtube.com/live/fdF4a51kPss?si=_TOS9-0iHXzY2DkL
+WSO2. (2024, 04 09). *Mastering the WSO2 Code Challenge with Choreo | Community Call 5* [YouTube Video]. Retrieved from https://www.youtube.com/live/fdF4a51kPss?si=_TOS9-0iHXzY2DkL
