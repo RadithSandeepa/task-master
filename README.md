@@ -12,9 +12,18 @@ Welcome to TaskMaster! Developed for the WSO2 Code Challenge 2024, this robust t
 
 3. **Email Reminder Component**: 
    - Using Ballerina, I developed a scheduled job component that sends email reminders for tasks due the next day. This component ensures users stay informed and never miss an important task.
+  
+     ![Email Reminder Task](https://github.com/RadithSandeepa/task-master/blob/main/photos/email_reminder_task.png)
+     
 
 4. **Authentication**: 
    - During development, I utilized Choreo's built-in identity provider for user authentication. For the production build, I implemented secure user authentication using Asgardeo.
+  
+     ![Choreo](https://github.com/RadithSandeepa/task-master/blob/main/photos/choreo_built-in_identity_provider.png)
+
+      ![Asgardeo(1)](https://github.com/RadithSandeepa/task-master/blob/main/photos/asgardeo(1).png)
+
+      ![Asgardeo(2)](https://github.com/RadithSandeepa/task-master/blob/main/photos/asgardeo(2).png)
 
 5. **Database**: 
    - MySQL is used as the database to store and manage task data efficiently.
@@ -41,6 +50,7 @@ Welcome to TaskMaster! Developed for the WSO2 Code Challenge 2024, this robust t
 ![Login](https://github.com/RadithSandeepa/task-master/blob/main/photos/login.png)
 
 ![Home](https://github.com/RadithSandeepa/task-master/blob/main/photos/home.png)
+
 
 <a id="Eligibility"></a>
 ## Eligibility
